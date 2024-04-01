@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+class AddBook{
+    //public 
+    public void AddBookToList(List<String> arrayList, String bookName, String bookAuthor, String isbn){
+        List<String> bookNameList = new ArrayList<>();
+        List<String> bookAuthorList = new ArrayList<>();
+        arrayList.add(bookName);
+    }
+}
+public class Main
+{
+    public static void main(String[] args) {
+        List<String> arrayList = new ArrayList<>();
+        
+        //Initialize scanner to accept User input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Book/Author/ISBN");
+       
+        //Input the BookName/Author/ISBN in the following format
+        String bookInput = scanner.nextLine();
+        String[] bookParsed = bookInput.split("/");
+        
+        //Separate the String array into respective attributes
+        String bookName = bookParsed[0];
+        String bookAuthor = bookParsed[1];
+        String isbn = bookParsed[2];
+        
+        System.out.println(bookName+"  "+bookAuthor+"  "+isbn);
+        
+    }
+}

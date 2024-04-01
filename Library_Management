@@ -2,6 +2,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Online Java - IDE, Code Editor, Compiler
+
+Online Java is a quick and easy tool that helps you to build, compile, test your programs online.
+*/
 class AddBook{
     //public 
     public void AddBookToList(List<String> arrayList, String bookName, String bookAuthor, String isbn){
@@ -14,21 +19,44 @@ public class Main
 {
     public static void main(String[] args) {
         List<String> arrayList = new ArrayList<>();
+        //Initialize user input for tasknumber to determine function of the library use
+        Scanner taskscanner = new Scanner(System.in);
         
-        //Initialize scanner to accept User input
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Book/Author/ISBN");
-       
-        //Input the BookName/Author/ISBN in the following format
-        String bookInput = scanner.nextLine();
-        String[] bookParsed = bookInput.split("/");
-        
-        //Separate the String array into respective attributes
-        String bookName = bookParsed[0];
-        String bookAuthor = bookParsed[1];
-        String isbn = bookParsed[2];
-        
-        System.out.println(bookName+"  "+bookAuthor+"  "+isbn);
-        
+        //Initialize while loop to continue running the program until user ends program
+        boolean libraryUse = true;
+        while (libraryUse = true){
+            //int id = 0000;
+            System.out.print("1. Add a new book to the library.\n" +
+                             "2. Search for a book by its title.\n" +
+                             "3. Display all the books available in the library.\n" +
+                             "4. Check out a book.\n" +
+                             "5. Return a book.\n"+
+                             "6. Exit");
+            int taskNumber = taskscanner.nextInt();
+            switch(taskNumber){
+                case 1:
+                    System.out.println("Please enter the book name, author, ISBN. Example Format: "+
+                                       "Harry Potter and the Order of the Shells/J.K. Rowling/978-1-56619-909-42");
+                    //Initialize scanner to accept User input
+                    Scanner addBookInput = new Scanner(System.in);
+                    
+                    //Input the BookName/Author/ISBN in the following format
+                    String bookInput = addBookInput.nextLine();
+                    String[] bookParsed = bookInput.split("/");
+                    
+                    //Separate the String array into respective attributes
+                    String bookName = bookParsed[0];
+                    String bookAuthor = bookParsed[1];
+                    String isbn = bookParsed[2];
+                    
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                default: 
+            }
+
     }
+}
+
 }

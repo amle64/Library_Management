@@ -9,6 +9,10 @@ class AddBook{
     private static List<String> bookAuthorList = new ArrayList<>();
     private static List<String> bookISBN_List = new ArrayList<>();
     
+    //List specific for intializing checkout status when entering new books
+    private static List<String> bookCheckOutStatus = new ArrayList<>();
+    public static int book_index = 0;
+    
     //Constructor to add elements to each lists
 public AddBook(String bookName, String bookAuthor, String isbn){
     //Initialize various list for each attribute: bookName, bookAuthor, and isbn
@@ -16,6 +20,12 @@ public AddBook(String bookName, String bookAuthor, String isbn){
     bookAuthorList.add(bookAuthor);
     bookISBN_List.add(isbn);
 
+}
+    //Method to add Available status for new books entered in library list
+public void CheckOutStatus(){
+    bookCheckOutStatus.add("Available");
+    book_index++;
+    
 }
 
 //Return Lists for each attributes
@@ -27,6 +37,9 @@ public List<String> BookAuthorList(){
 }
 public List <String> BookISBN_List(){
     return bookISBN_List;
+}
+public List<String> CheckOutList(){
+    return bookCheckOutStatus;
 }
 
 }
@@ -40,9 +53,9 @@ public class Main
 
         //Initialize while loop to continue running the program until user ends program
         boolean libraryUse = true;
-        //AddBook addBook = null;
+        
+        int n = 0;
         while (libraryUse = true){
-            //int id = 0000;
             System.out.print("1. Add a new book to the library.\n" +
                              "2. Search for a book by its title.\n" +
                              "3. Display all the books available in the library.\n" +
@@ -67,12 +80,18 @@ public class Main
                     String bookName = bookParsed[0];
                     String bookAuthor = bookParsed[1];
                     String isbn = bookParsed[2];
-
+                    
+                    
                     AddBook addBook = new AddBook(bookName,bookAuthor,isbn);
                     
                     List <String> bookNameList = addBook.BookNameList();
                     List <String> bookAuthorList = addBook.BookAuthorList();
                     List <String> bookISBN_List = addBook.BookISBN_List();
+                    
+                    addBook.CheckOutStatus();
+                    List <String> checkOutList = addBook.CheckOutList();
+                    
+                    n++;
                     break;
 
                 case 2:

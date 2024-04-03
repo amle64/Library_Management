@@ -4,29 +4,43 @@ import java.util.List;
 
 
 class AddBook{
-    //public 
-public AddBook(List<String> arrayList, String bookName, String bookAuthor, String isbn){
-    //Initialize various list for each attribute: bookName, bookAuthor, and isbn
-    List<String> bookNameList = new ArrayList<>();
-    List<String> bookAuthorList = new ArrayList<>();
-    List<String> bookISBN = new ArrayList<>();
+    //Initialize Lists for each attribute that makes it accessible within class AddBook 
+    private static List<String> bookNameList = new ArrayList<>();
+    private static List<String> bookAuthorList = new ArrayList<>();
+    private static List<String> bookISBN_List = new ArrayList<>();
     
+    //Constructor to add elements to each lists
+public AddBook(String bookName, String bookAuthor, String isbn){
+    //Initialize various list for each attribute: bookName, bookAuthor, and isbn
     bookNameList.add(bookName);
     bookAuthorList.add(bookAuthor);
-    bookISBN.add(isbn);
+    bookISBN_List.add(isbn);
 
 }
 
+//Return Lists for each attributes
+public List<String> BookNameList(){
+    return bookNameList;
+    }
+public List<String> BookAuthorList(){
+    return bookAuthorList;
 }
+public List <String> BookISBN_List(){
+    return bookISBN_List;
+}
+
+}
+
 public class Main
 {
     public static void main(String[] args) {
-        List<String> arrayList = new ArrayList<>();
+        //List<String> arrayList = new ArrayList<>();
         //Initialize user input for tasknumber to determine function of the library use
         Scanner taskscanner = new Scanner(System.in);
 
         //Initialize while loop to continue running the program until user ends program
         boolean libraryUse = true;
+        //AddBook addBook = null;
         while (libraryUse = true){
             //int id = 0000;
             System.out.print("1. Add a new book to the library.\n" +
@@ -39,6 +53,7 @@ public class Main
             
             switch(taskNumber){
                 case 1:
+                    //System.out.println(arrayList+"Hi");
                     System.out.println("Please enter the book name, author, ISBN. Example Format: "+
                                        "Harry Potter and the Order of the Shells/J.K. Rowling/978-1-56619-909-42");
                     //Initialize scanner to accept User input
@@ -53,7 +68,12 @@ public class Main
                     String bookAuthor = bookParsed[1];
                     String isbn = bookParsed[2];
 
-                    AddBook addBook = new AddBook(arrayList,bookName,bookAuthor,isbn);
+                    AddBook addBook = new AddBook(bookName,bookAuthor,isbn);
+                    
+                    List <String> bookNameList = addBook.BookNameList();
+                    List <String> bookAuthorList = addBook.BookAuthorList();
+                    List <String> bookISBN_List = addBook.BookISBN_List();
+                    break;
 
                 case 2:
                 case 3:

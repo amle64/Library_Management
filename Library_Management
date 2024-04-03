@@ -5,9 +5,9 @@ import java.util.List;
 
 class AddBook{
     //Initialize Lists for each attribute that makes it accessible within class AddBook 
-    private static List<String> bookNameList = new ArrayList<>();
-    private static List<String> bookAuthorList = new ArrayList<>();
-    private static List<String> bookISBN_List = new ArrayList<>();
+    public static List<String> bookNameList = new ArrayList<>();
+    public static List<String> bookAuthorList = new ArrayList<>();
+    public static List<String> bookISBN_List = new ArrayList<>();
     
     //List specific for intializing checkout status when entering new books
     private static List<String> bookCheckOutStatus = new ArrayList<>();
@@ -44,6 +44,21 @@ public List<String> CheckOutList(){
 
 }
 
+class BookSearch{
+    private int x = 0;
+    public BookSearch(String book,List <String> bookNameList){
+        for (String bookTitle:bookNameList){
+            if (bookTitle.equals(book)){
+                System.out.println("The book \"" + book + "\" is among the list");
+                System.out.println("X is "+x);
+                break;
+            }
+            x++;
+            
+        }
+    }
+}
+
 public class Main
 {
     public static void main(String[] args) {
@@ -55,6 +70,11 @@ public class Main
         boolean libraryUse = true;
         
         int n = 0;
+        //Initialize the lists for each respective attribute before the switch statement. Which will enable use between the various cases/tasks.
+        List <String> bookNameList = null;
+        List <String> bookAuthorList = null;
+        List <String> bookISBN_List = null;
+        
         while (libraryUse = true){
             System.out.print("1. Add a new book to the library.\n" +
                              "2. Search for a book by its title.\n" +
@@ -84,9 +104,9 @@ public class Main
                     
                     AddBook addBook = new AddBook(bookName,bookAuthor,isbn);
                     
-                    List <String> bookNameList = addBook.BookNameList();
-                    List <String> bookAuthorList = addBook.BookAuthorList();
-                    List <String> bookISBN_List = addBook.BookISBN_List();
+                    bookNameList = addBook.BookNameList();
+                    bookAuthorList = addBook.BookAuthorList();
+                    bookISBN_List = addBook.BookISBN_List();
                     
                     addBook.CheckOutStatus();
                     List <String> checkOutList = addBook.CheckOutList();
@@ -95,6 +115,13 @@ public class Main
                     break;
 
                 case 2:
+                    Scanner bookNameSearch = new Scanner(System.in);
+                    System.out.println("Please enter the name of your book for your search");
+                    String bookSearchName = bookNameSearch.nextLine();
+                    
+                    BookSearch bookSearch = new BookSearch(bookSearchName,bookNameList);
+                    
+                    
                 case 3:
                 case 4:
                 case 5:
